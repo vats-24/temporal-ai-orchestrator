@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: temporal_postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: temporal
+    ports:
+      - "5499:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  temporal:
+    image: temporalio/auto-setup:1.24
+    container_name: temporal_server
+    depends_on:
+      - postgres
+    environment:
+      DB: postgres12 # <-- Fixed from 'postgresql' to 'postgres12'
+      DB_PORT: 5432
+      POSTGRES_USER: admin
+      POSTGRES_PWD: password
+      POSTGRES_SEEDS: postgres
+    ports:
+      - "7233:7233"
+
+  temporal-ui:
+    image: temporalio/ui:2.21.3
+    container_name: temporal_ui
+    depends_on:
+      - temporal
+    environment:
+      TEMPORAL_ADDRESS: temporal:7233
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres_data:
