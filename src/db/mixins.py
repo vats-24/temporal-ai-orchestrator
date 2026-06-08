@@ -14,5 +14,13 @@ class TimeStampMixin:
 
     updated_at = mapped_column(
         DateTime,
-        
+        default=datetime.now(),
+        onupdate=datetime.now()
+    )
+
+class UUIDMixin:
+    id = mapped_column(
+        UUID(as_uuid=True),
+    primary_key=True,
+    default=uuid.uuid4
     )
