@@ -8,11 +8,11 @@ from sqlalchemy.orm import mapped_column
 
 from src.db.base import Base
 from src.db.mixins import (
-    TimestampMixin,
+    TimeStampMixin,
     UUIDMixin,
 )
 
-class Borrower(Base,TimestampMixin, UUIDMixin):
+class Borrower(Base,TimeStampMixin, UUIDMixin):
     __tablename__ = "borrowers"
 
     full_name = mapped_column(

@@ -7,10 +7,10 @@ from sqlalchemy.orm import mapped_column
 from src.db.base import Base
 from src.db.mixins import (
     UUIDMixin,
-    TimestampMixin,
+    TimeStampMixin,
 )
 
-class WorkflowInstance(Base, TimestampMixin, UUIDMixin): 
+class WorkflowInstance(Base, TimeStampMixin, UUIDMixin): 
     __tablename__ = "workflow_instances"
 
     borrower_id = mapped_column(

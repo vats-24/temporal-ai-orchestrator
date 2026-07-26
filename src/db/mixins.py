@@ -8,12 +8,12 @@ from sqlalchemy.dialects.postgresql import UUID
 
 class TimeStampMixin:
     created_at = mapped_column(
-        DateTime,
+        DateTime(timezone=True),
         default=datetime.now()
     )
 
     updated_at = mapped_column(
-        DateTime,
+        DateTime(timezone=True),
         default=datetime.now(),
         onupdate=datetime.now()
     )

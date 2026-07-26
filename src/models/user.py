@@ -8,10 +8,10 @@ from sqlalchemy.orm import mapped_column
 from src.db.base import Base
 from src.db.mixins import (
     UUIDMixin,
-    TimestampMixin,
+    TimeStampMixin,
 )
 
-class User(Base, TimestampMixin, UUIDMixin):
+class User(Base, TimeStampMixin, UUIDMixin):
     __tablename__ = "users"
 
     email = mapped_column(
