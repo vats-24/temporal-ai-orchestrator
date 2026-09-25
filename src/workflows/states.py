@@ -1,0 +1,14 @@
+from enum import Enum
+
+class WorkflowState(str, Enum):
+    INITIATED = "INITIATED"
+
+    CONTACT_ATTEMPTED = "CONTACT_ATTEMPTED"
+
+    NEGOTIATION = "NEGOTIATION"
+
+    PROMISE_TO_PAY = "PROMISE_TO_PAY"
+
+    ESCALATED = "ESCALATED"
+
+    CLOSED = "CLOSED"
